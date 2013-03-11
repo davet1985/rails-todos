@@ -1,0 +1,17 @@
+
+<h4 class="text-center"><em>View List</em></h4>
+<div class="list">
+
+    <i class="icon-list"></i>
+    <strong><%= @list.title %></strong>
+    <br/>
+    <% if not(@list.description.empty?) %>
+      <small><em><%= @list.description %></em></small>
+      <br/>
+    <% end %>
+
+</div>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Delete', @list, confirm: 'Are you sure?', method: :delete %> | 
+<%= link_to 'Back', lists_path %>
