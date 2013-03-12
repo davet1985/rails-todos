@@ -1,27 +1,34 @@
 <h4 class="text-center"><em>Edit List</em></h4>
 
-
 <div class="new-list">
 	<%= form_for(@list, :html => { :class => "form-horizontal"} ) do |f| %>
 
-	  <div class="control-group">
-	  	<%= f.label :title, :class => "control-label strong" %>
-	    <div class="controls">
-	     <%= f.text_field :title %>
-	    </div>
-	  </div>
-	  <div class="control-group">
-	  	<%= f.label :description, :class => "control-label strong" %>
-	    <div class="controls">
-	     <%= f.text_field :description %>
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <div class="controls">
-	      <%= f.submit %>
-	      <%= link_to 'Cancel', lists_path %>
-	    </div>
-	  </div>
+		<% if @list.errors.any? %>
+			<div id="error_explanation">
+				<small><em><%= pluralize(@list.errors.count, "error") %> found on this form, please correct these before you can continue.</em></small>
+			</div>
+		<% end %>
+
+	    <div class="control-group">
+		  	<%= f.label :title, :class => "control-label strong" %>
+		    <div class="controls">
+		     	<%= f.text_field :title %>
+				<small class="error-line"><em><%= @list.errors.full_message(:title, 'must not be blank') if @list.errors[:title].any?%></em></small>
+		    </div>
+		</div>
+		<div class="control-group">
+		  	<%= f.label :description, :class => "control-label strong" %>
+		    <div class="controls">
+		     	<%= f.text_field :description %>
+				<small class="error-line"><em><%= @list.errors.full_message(:description, 'must not be blank') if @list.errors[:description].any?%></em></small>
+		    </div>
+		</div>
+		<div class="control-group">
+		    <div class="controls">
+		      	<%= f.submit %>
+		      	<%= link_to 'Cancel', lists_path %>
+		    </div>
+		</div>
 
 	<% end %>
 </div>
