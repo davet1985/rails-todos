@@ -13,14 +13,20 @@
 			<%= f.label :title, :class => "control-label strong" %>
 			<div class="controls">
 				<%= f.text_field :title %>
-				<small class="error-line"><em><%= @list.errors.full_message(:title, 'must not be blank') if @list.errors[:title].any?%></em></small>
+				<% @list.errors[:title].each do | msg | %>
+		        	<small class="error-line"><em><%= :title.to_s.capitalize + " " + msg %></em></small>
+		        	<br/>
+		      	<% end %>
 			</div>
 		</div>
 		<div class="control-group">
 			<%= f.label :description, :class => "control-label strong" %>
 			<div class="controls">
 				<%= f.text_field :description %>
-				<small class="error-line"><em><%= @list.errors.full_message(:description, 'must not be blank') if @list.errors[:description].any?%></em></small>
+				<% @list.errors[:description].each do | msg | %>
+		        	<small class="error-line"><em><%= :description.to_s.capitalize + " " + msg %></em></small>
+		        	<br/>
+		      	<% end %>
 			</div>
 		</div>
 		<div class="control-group">
