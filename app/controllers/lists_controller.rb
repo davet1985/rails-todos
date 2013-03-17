@@ -3,6 +3,10 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index    
     @lists = List.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @lists }
+    end
   end
 
   # GET /lists/new

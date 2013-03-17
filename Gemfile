@@ -1,16 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
-
 gem 'mongo_mapper'
 gem 'bson_ext'
-#gem 'less-rails-bootstrap'
+
+# use bootstap css
 gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,6 +20,18 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+# setup rspec testing for dev and test only
+group :test, :development do
+  gem 'minitest', '~> 2.6.1'
+	gem 'rspec-rails'
+	gem 'capybara'
+	gem 'guard-rspec'
+	gem 'rb-notifu'
+	gem 'wdm'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
